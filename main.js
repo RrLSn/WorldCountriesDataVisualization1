@@ -2736,7 +2736,7 @@ const countries_data = [
 			"area": 242900
 	},
 	{
-			"name": "United States of America",
+			"name": "USA",
 			"capital": "Washington, D.C.",
 			"languages": [
 					"English"
@@ -2863,7 +2863,7 @@ const countries_data = [
 	}
 ]
 
-selectors
+// selectors
 const btn1 = document.querySelector('.btn1')
 const btn2 = document.querySelector('.btn2')
 const mostEl = document.querySelector('.most')
@@ -2872,18 +2872,69 @@ const chatData = document.querySelector('.chat_data')
 const chatEl = document.querySelector('.chat')
 const numberEl = document.querySelector('.number')
 
+// Population
+let totalPopulation = 0
+for(const pL of countries_data){
+	totalPopulation += pL.population
+}
+
+const sortPopulation = countries_data.sort((a,b) => {
+	if(a.population > b.population){
+		return -1
+	}
+	if(a.population < b.population){
+		return 1
+	}
+})
+
+const tenMostP = sortPopulation.splice(0, 10)
+
+let firstTenP = []
+for(const t of tenMostP){
+	let fTenP = {country: t.name, population: t.population}
+	firstTenP.push(fTenP)
+}
+
+
+// languages
+let lang = []
+countries_data.map((n) => {
+    for (const c of n.languages) {
+        const langExist = lang.find((d) => d.country === c)
+        const langIndex = lang.findIndex((d) => d.country === c)
+        if (langExist) {
+            lang.splice(langIndex, 1, { ...langExist, count: langExist.count + 1 })
+        } else {
+            lang.push({country: c, count: 1})
+        }
+    }
+})
+// console.log(lang)
+
+lang.sort((a,b) => {
+	if(a.count > b.count){
+		return -1
+	}
+	if(a.count < b.count){
+		return 1
+	}
+})
+
+const firstTenL = lang.splice(0,10)
+console.log(firstTenL)
+
+
 btn1.addEventListener(
     'click',
     () => {
         mostEl.textContent = '10 MOST POPULATED COUNTRIES IN THE WORLD'
-        for(countries of countries_data){
-            countries_data.sort((a, b) => {
-                if(a > b){
-                    console.log(true)
-                    console.log(countriesName.textContent += countries)
-                }
-            })
-        }
+        countriesName.innerHTML = ''
+		chatData.innerHTML = ''
+		numberEl.innerHTML = ''
+		for(const tp of firstTenP){
+			countriesName.innerHTML += `<p>${tp.country}</p>`
+			numberEl.innerHTML += `<p>${tp.population}</p>`
+		}
     }
 )
 
@@ -2891,11 +2942,12 @@ btn2.addEventListener(
     'click',
     () => {
         mostEl.textContent = '10 MOST SPOKEN LANGUAGES IN THE WORLD'
+		countriesName.innerHTML = ''
+		chatData.innerHTML = ''
+		numberEl.innerHTML = ''
+		for(const tl of firstTenL){
+			countriesName.innerHTML += `<p>${tl.country}</p>`
+			numberEl.innerHTML += `<p>${tl.count}</p>`
+		}
     }
 )
-
-// const langs = []
-// countries_data.map(country => {
-// 	for(const c of country.languages){}
-// })
-
