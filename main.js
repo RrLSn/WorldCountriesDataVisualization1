@@ -2947,6 +2947,9 @@ btn2.addEventListener(
 		numberEl.innerHTML = ''
 		for(const tl of firstTenL){
 			countriesName.innerHTML += `<p>${tl.country}</p>`
+			chatEl.style.width = '10rem'
+			chatEl.style.heigth = '2rem'
+			chatEl.style.background = '#f2a93b'
 			numberEl.innerHTML += `<p>${tl.count}</p>`
 		}
     }

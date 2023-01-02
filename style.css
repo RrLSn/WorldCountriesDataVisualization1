@@ -64,28 +64,30 @@ main{
 }
 
 .data{
-    width: 70%;
-    margin: 3rem auto;
-    height: max-content;
+    width: 80%;
+    gap: 2rem;
     display: flex;
+    margin: 2rem auto;
 }
 
 .countries{
     width: 17rem;
-    padding: 0.5rem;
     text-align: center;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .number{
+    display: flex;
+    flex-direction: column;
     width: 17rem;
     padding: 0.5rem;
     text-align: center;
 }
 
 .chat_data{
-    width: 40rem;
-}
-
-.chat{
-    background-color: var(--orange);
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
 }
