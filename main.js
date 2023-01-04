@@ -2114,7 +2114,7 @@ const countries_data = [
 			"area": 238391
 	},
 	{
-			"name": "Russian Federation",
+			"name": "Russian",
 			"capital": "Moscow",
 			"languages": [
 					"Russian"
@@ -2868,9 +2868,10 @@ const btn1 = document.querySelector('.btn1')
 const btn2 = document.querySelector('.btn2')
 const mostEl = document.querySelector('.most')
 const countriesName = document.querySelector('.countries')
-const chatData = document.querySelector('.chat_data')
+const dataEl = document.querySelector('.data')
 const chatEl = document.querySelector('.chat')
 const numberEl = document.querySelector('.number')
+const wrapperEl = document.querySelector('.wrapper')
 
 // Population
 let totalPopulation = 0
@@ -2909,7 +2910,6 @@ countries_data.map((n) => {
         }
     }
 })
-// console.log(lang)
 
 lang.sort((a,b) => {
 	if(a.count > b.count){
@@ -2921,19 +2921,28 @@ lang.sort((a,b) => {
 })
 
 const firstTenL = lang.splice(0,10)
-console.log(firstTenL)
+
+let world = {
+	'population': totalPopulation,
+	'country': "world"
+}
+
+firstTenP.unshift(world)
 
 
 btn1.addEventListener(
     'click',
     () => {
         mostEl.textContent = '10 MOST POPULATED COUNTRIES IN THE WORLD'
-        countriesName.innerHTML = ''
-		chatData.innerHTML = ''
-		numberEl.innerHTML = ''
+		wrapperEl.innerHTML = ''
 		for(const tp of firstTenP){
-			countriesName.innerHTML += `<p>${tp.country}</p>`
-			numberEl.innerHTML += `<p>${tp.population}</p>`
+			wrapperEl.innerHTML += `<div class='data'>
+			<div class='countries'>${tp.country}</div>
+			<div class='chat_data'>
+			<div class='chat' style='width: ${tp.population * 100/totalPopulation}%'></div>
+			</div>
+			<div class='number'>${tp.population}</div>
+			</div>`
 		}
     }
 )
@@ -2942,15 +2951,15 @@ btn2.addEventListener(
     'click',
     () => {
         mostEl.textContent = '10 MOST SPOKEN LANGUAGES IN THE WORLD'
-		countriesName.innerHTML = ''
-		chatData.innerHTML = ''
-		numberEl.innerHTML = ''
+		wrapperEl.innerHTML = ''
 		for(const tl of firstTenL){
-			countriesName.innerHTML += `<p>${tl.country}</p>`
-			chatEl.style.width = '10rem'
-			chatEl.style.heigth = '2rem'
-			chatEl.style.background = '#f2a93b'
-			numberEl.innerHTML += `<p>${tl.count}</p>`
+			wrapperEl.innerHTML += `<div class='data'>
+			<div class='countries'>${tl.country}</div>
+			<div class='chat_data'>
+			<div class='chat' style='width: ${tl.count * 100/87}%'></div>
+			</div>
+			<div class='number'>${tl.count}</div>
+			</div>`
 		}
     }
 )

@@ -8,6 +8,7 @@
 body{
     background-color: #f0f0f0;
     font-family: 'Segoe UI';
+    padding-bottom: 4rem;
 }
 
 .header{
@@ -27,7 +28,7 @@ body{
 
 main{
     width: 99%;
-    height: 50rem;
+    height: 47rem;
     box-shadow: 0 0 0.3rem 0.05rem #7272728c;
     margin: auto;
 }
@@ -63,31 +64,39 @@ main{
     cursor: pointer;
 }
 
+.wrapper{
+    margin-top: 2rem;
+}
+
 .data{
-    width: 80%;
-    gap: 2rem;
+    width: 70vw;
     display: flex;
-    margin: 2rem auto;
+    margin: auto;
+    padding-top: 1rem;
 }
 
 .countries{
-    width: 17rem;
-    text-align: center;
+    width: 11rem;
+    height: 2rem;
+    justify-content: center;
     padding: 0.5rem;
     display: flex;
-    flex-direction: column;
 }
 
 .number{
+    width: 10rem;
+    height: 2rem;
     display: flex;
-    flex-direction: column;
-    width: 17rem;
     padding: 0.5rem;
-    text-align: center;
+    justify-content: center;
+}
+
+.chat{
+    display: flex;
+    background-color: var(--orange);
+    height: 2rem;
 }
 
 .chat_data{
-    /* width: 100%; */
-    display: flex;
-    flex-direction: column;
+    width: 50rem;
 }
